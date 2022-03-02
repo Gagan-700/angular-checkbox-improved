@@ -1,0 +1,40 @@
+<table>
+  <tr>
+    <th>Company</th>
+    <th>Access</th>
+    <th>Primary</th>
+    <th>cin</th>
+    <th>status</th>
+  </tr>
+  <tr *ngFor="let x of tableData; let i = index">
+    <td>{{ x.company }}</td>
+    <td>
+      <span *ngIf="tableData[i].access && !toggle">&#10003;</span>
+      <input
+        #check
+        *ngIf="toggle"
+        type="checkbox"
+        [(ngModel)]="accessCheck[i]"
+        (change)="checkbox(check.value, check.id)"
+        value="Selected"
+        [checked]="tableData[i].access"
+      />
+    </td>
+    <td>
+      <ng-container *ngIf="tableData[i].primary">
+        <span *ngIf="!toggle">&#10003;</span>
+        <input
+          #check
+          *ngIf="toggle"
+          type="checkbox"
+          (change)="checkbox(check.value, check.id)"
+          value="Selected"
+        />
+      </ng-container>
+    </td>
+    <td>{{ x.cin }}</td>
+    <td>{{ x.status }}</td>
+  </tr>
+</table>
+<button type="submit" (click)="update()">Update</button>
+<button type="submit" (click)="submit()">submit</button>
