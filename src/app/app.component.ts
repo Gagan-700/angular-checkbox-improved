@@ -10,6 +10,7 @@ export class AppComponent {
   toggle = false;
   data = [];
   accessCheck: boolean[] = [];
+  primaryCheck: boolean[] = [];
   tableData = [
     {
       company: 'xyz',
