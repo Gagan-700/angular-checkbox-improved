@@ -15,22 +15,22 @@
         *ngIf="toggle"
         type="checkbox"
         [(ngModel)]="accessCheck[i]"
-        (change)="checkbox(check.value, check.id)"
+        (change)="updateAccessCheck()"
         value="Selected"
         [checked]="tableData[i].access"
       />
     </td>
     <td>
-      <ng-container *ngIf="tableData[i].primary">
-        <span *ngIf="!toggle">&#10003;</span>
-        <input
-          #check
-          *ngIf="toggle"
-          type="checkbox"
-          (change)="checkbox(check.value, check.id)"
-          value="Selected"
-        />
-      </ng-container>
+    <span *ngIf="tableData[i].primary && !toggle">&#10003;</span>
+    <input
+      #check
+      *ngIf="toggle"
+      type="checkbox"
+      [(ngModel)]="primaryCheck[i]"
+      (change)="checkbox(check.value, check.id)"
+      value="Selected"
+      [checked]="tableData[i].primary"
+    />
     </td>
     <td>{{ x.cin }}</td>
     <td>{{ x.status }}</td>
